@@ -1,0 +1,804 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+	<head>
+		<title>AdvancedFutures_ebook_060423-10</title>
+		<link href="css/idGeneratedStyles.css" rel="stylesheet" type="text/css"/>
+<meta content="urn:uuid:3fe18be0-b941-4d5b-977d-2f677438e447" name="Adept.expected.resource"/>
+	</head>
+	<body id="AdvancedFutures_ebook_060423-10" lang="en-GB" xml:lang="en-GB">
+		<div>
+			<p class="Strategy-Title-NEW" id="_idParaDest-7" lang="en-GB"><a id="_idTextAnchor041"/>Strategy two: Buy and hold with risk scaling</p>
+			<p class="Body-Text" lang="en-GB">Let’s review what we did in strategy one. We assumed that we had a fixed position: one contract. We then calculated a measure of how much cash – <span class="Emphasis">capital</span> – we’d need to hold that position. This capital amount was conservatively set as equal to the notional value of the future: our position was f<span class="No-Break">ully funded.</span></p>
+			<p class="Body-Text" lang="en-GB">But that is not how the world works! When I was working for AHL, a large hedge fund that traded futures, we didn’t first decide what markets we wanted to trade, calculate the required capital for the size of positions that we wanted to have, and then go to our investors and ask them to write an appropriately sized cheque. Instead, our investors decided how much capital they were going to provide. Then it was up to us to calculate an appropriate po<span class="No-Break">sition size.</span></p>
+			<p class="Body-Text" lang="en-GB">That is the correct order: given (a) the amount of capital, decide on (b) position size. But what sort of elements would go into a calculation of appropriate position size? In this chapter I will show that the most important input into this process is the <span class="Emphasis">risk</span><span class="Strong"> </span>of the relevant instrument. Instruments that are riskier will usually have higher initial margin requirements, so we’d need more cash to start trading them. They also have the potential for larger losses once we’re holding them, requiring more cash to cover these losses in the form of varia<span class="No-Break">tion margin.</span></p>
+			<p class="Body-Text" lang="en-GB">We saw in strategy one (in tables 3 and 4) that there is a lot of difference in risk between different futures. If an instrument has higher risk, then we’d want to hold a smaller position for a given amount of capital. In this strategy I will explain precisely how to calculate the right position for a buy and hold strategy, taking risk i<span class="No-Break">nto account:</span></p>
+			<p class="Strategy-text-NEW" lang="en-GB"><span class="Strong-NEW">Strategy two:</span> Buy and hold, with positions scaled for risk.</p>
+			<p class="Body-Text" lang="en-GB">As well as explaining the strategy in some detail, I’ll also cover the following topics in t<span class="No-Break">his chapter:</span></p>
+			<ul>
+				<li class="ListBullet-NEW" lang="en-GB">Measuring risk.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Position scaling.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Determining the correct risk to target.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Compounding of returns for performance evaluation.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Calculating the minimum capital required to trade a particular future.</li>
+			</ul>
+			<p class="Body-Text" lang="en-GB">This is a pretty heavy chapter, with a fair number of equations. But it’s vital to understand the material here before proceeding, so make sure you’re happy befor<span class="No-Break">e moving on.</span></p>
+			<p class="heading-3" lang="en-GB">Me<a id="_idTextAnchor042"/>asuring the risk of a single contract</p>
+			<p class="Body-Text" lang="en-GB">Step one in calculating position size will be to measure <span class="Strong">how risky a single contract of a given instrument is</span>. Let’s return to our old favourite, the S&amp;P 500 m<span class="No-Break">icro future.</span></p>
+			<p class="Body-Text" lang="en-GB">We need to know how risky it is to hold one contract of S&amp;P 500. This will depend on how volatile the price of the S&amp;P 500 future is. We’ll measure this riskiness as an <span class="Emphasis">annualised standard deviation of returns</span>. To make the maths simpler, let’s assume for now that the daily standard deviation of the S&amp;P 500 is approximately 1%, which if I annualise using the method outlined in strategy one is 0.0<span class="No-Break">1 ×16 = 16%.</span></p>
+			<p class="Body-Text" lang="en-GB">The next step is to translate this risk into dollar terms. Here are the values we already used for s<span class="No-Break">trategy one:</span></p>
+			<table class="No-Table-Style _idGenTablePara-1" id="table012">
+				<colgroup>
+					<col/>
+					<col/>
+				</colgroup>
+				<tbody>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Instrument</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">S&amp;P 500 micro future</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Futures multiplier</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">$5</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Current price</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">4500</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Current notional value</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">4500 × $5 = $22,500</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="Body-Text-after-table" lang="en-GB">We can use these figures to calculate our risk in currency terms, rather than perce<span class="No-Break">ntage terms:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-24" src="image/30.png"/></p>
+			<p class="Body-Text" lang="en-GB">So owning a single futures contract exposes us to $3,600 of risk, measured as an expected standard deviation per year. Not everyone finds the standard deviation measure to be an intuitive measure of risk, so it is worth thinking about what a standard deviation of $3,600 a y<span class="No-Break">ear implies.</span></p>
+			<p class="Body-Text" lang="en-GB">To do this we have to assume that returns are well behaved, symmetric, and drawn from a normal Gaussian distribution. None of this is true in practice, which means the figures I’m about to calculate should be taken with a large bucketful of salt. In reality you should expect the downside to be significa<span class="No-Break">ntly bigger.</span></p>
+			<p class="Body-Text" lang="en-GB">With that caveat in mind, if we assume that the Sharpe ratio (SR) of S&amp;P 500 futures is 0.3055 (roughly what it has been historically), then the average annual excess ret<span class="No-Break">urn will be:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-25" src="image/31.png"/></p>
+			<p class="Body-Text" lang="en-GB">The region of the normal distribution between the mean and one standard deviation above the mean covers around 34% of the entire distribution. As the normal distribution is symmetric the region between plus and minus one standard deviation around the mean encompasses 68% of the d<span class="No-Break">istribution.</span></p>
+			<p class="Body-Text" lang="en-GB">So 68% of the time, our annual return will be between 1100 − 3600 = −$2,500 (loss) and 1100 + 3600 = $4,700 (profit). Alternatively, this means that we will lose more than $2,500 in any given year at least 16% of the time,<span class="Superscript _idGenCharOverride-1"><span id="footnote-053-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-053">43</a></span></span> or roughly one in ever<span class="No-Break">y six years.</span></p>
+			<p class="Body-Text" lang="en-GB">We could also translate these figures into expectations for daily losses. But any caveats about non-Gaussian distributions are even more important for daily frequencies, and we have the usual problem that converting annual to daily standard deviations relies on some additional <span class="No-Break">assumptions.</span></p>
+			<p class="heading-3" lang="en-GB">Bas<a id="_idTextAnchor043"/>ic position scaling</p>
+			<p class="Body-Text" lang="en-GB">My method for calculating position size using risk is best illustrated with an example. Let’s begin by making a few highly unrealistic assumptions. First suppose we have exactly $22,500 in capital. Next suppose that we’re comfortable with risk on that capital of exactly 16% per year, measured in annualised standard deviation terms (I’ll discuss how you’d come up with that figure in a couple of pages’ time). I call this figure the <span class="Strong">target risk</span>. Given those parameters, how many S&amp;P 500 contracts would we <span class="No-Break">want to own?</span></p>
+			<p class="Body-Text" lang="en-GB">The answer is <span class="Strong">exactly one contract</span>. We want 16% of risk on capital of $22,500, which works out to 22500 × 16% = $3,600 per year. We also know, from above, that each S&amp;P 500 contract has risk of $3,600 per year. What an astonishing coincidence (<span class="No-Break">not really)!</span></p>
+			<p class="Body-Text" lang="en-GB">What if we had twice as much capital ($45,000)? Then we’d require twice as much risk (45000 × 16% = $7,200). So we’d need to buy two contracts instead of one, giving us risk of 2 × 36<span class="No-Break">00 = $7,200.</span></p>
+			<p class="Body-Text" lang="en-GB">Now suppose that the S&amp;P 500 was twice as risky. With annualised risk of 32% a year, that would be equivalent to a risk on each contract of 22500 × 32% = $7,200. We’d need half as many contracts. So for capital of $45,000 and a risk target of 16% a year on that capital, equivalent to $7,200, we’d once again only need to buy a sing<span class="No-Break">le contract.</span></p>
+			<p class="Body-Text" lang="en-GB">I can formalise these results into a single equation that accounts for the possibility of different currencies. From strategy one, the notional exposure value of a single <span class="No-Break">contract is:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-20" src="image/32.png"/></p>
+			<p class="Body-Text" lang="en-GB">The price should be for the expiry date we currently hold (<span class="Emphasis">not</span> the back-adjusted price), and the FX rate translates between the two currencies. The risk of a single contract position measured as an annualised standard devia<span class="No-Break">tion (</span><span class="No-Break"><span class="Equation">σ</span></span><span class="No-Break">) is:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-20" src="image/33.png"/></p>
+			<p class="Body-Text" lang="en-GB">Where <span class="Equation">σ</span><span class="Equation-body-subscript _idGenCharOverride-2">%</span><span class="Subscript _idGenCharOverride-1"> </span>is the annualised standard deviation of percentage returns for the relevant instrument in the instrument currency.<span class="Superscript _idGenCharOverride-1"><span id="footnote-052-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-052">44</a></span></span> For a given number of contracts, <span class="Emphasis">N</span>, the risk of our entire posit<span class="No-Break">ion will be:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-2" src="image/34.png"/></p>
+			<p class="Body-Text" lang="en-GB">Next we need to specify how much capital we have, and a predetermined <span class="Emphasis">target risk</span> (I’ll explain where this comes from later), <span class="Equation"><img alt="" class="_idGenObjectAttribute-26" src="image/35.png"/> </span>which we also specify as an annualised percentage standard deviation. Given that, we can calculate what our risk target is in cur<span class="No-Break">rency terms:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-2" src="image/36.png"/></p>
+			<p class="Body-Text" lang="en-GB">We now set our required position risk to be equal to the risk target in cur<span class="No-Break">rency terms:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-2" src="image/37.png"/></p>
+			<p class="Body-Text" lang="en-GB">Substituting and rearranging, we get the required position in contracts N to achieve a given <span class="No-Break">target risk:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-2" src="image/38.png"/></p>
+			<p class="Body-Text" lang="en-GB">Notice that the following will all result in a larg<span class="No-Break">er position:</span></p>
+			<ul>
+				<li class="ListBullet-NEW" lang="en-GB">Lower instrument risk, <span class="Equation">σ</span><span class="Equation-body-subscript _idGenCharOverride-2">%</span></li>
+				<li class="ListBullet-NEW" lang="en-GB">A higher percentage risk target, <span class="Equation">τ</span></li>
+				<li class="ListBullet-NEW" lang="en-GB">More capital</li>
+				<li class="ListBullet-NEW" lang="en-GB">A lower futures multiplier</li>
+				<li class="ListBullet-NEW" lang="en-GB">A lower price</li>
+				<li class="ListBullet-NEW" lang="en-GB">A different FX rate, where the instrument currency has depreciated relative to the account currency</li>
+			</ul>
+			<p class="Body-Text" lang="en-GB">Let’s check that this works for the surprisingly coincidental example<span class="No-Break"> from above:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-3" src="image/39.png"/></p>
+			<p class="Body-Text" lang="en-GB">There is an alternative formulation which I will use later in the book, which involves measuring our risk in <span class="Emphasis">daily price points</span> rather than in <span class="Emphasis">annualised percentage points</span>. The daily risk in price points (<span class="Equation">σ</span><span class="Equation-subscript _idGenCharOverride-1">P</span>) is just equal to the current price multiplied by the annual percentage risk, di<span class="No-Break">vided by 16:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-5" src="image/40.png"/></p>
+			<p class="Body-Text" lang="en-GB">We can also calculate <span class="Equation">σ</span><span class="Equation-subscript _idGenCharOverride-1">P</span> directly by taking the standard deviation of a series of differences in daily back-adju<span class="No-Break">sted prices:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-5" src="image/41.png"/></p>
+			<p class="Body-Text" lang="en-GB">This has the advantage that it works even if the current futures price is negative, and gives us the following marginally simp<span class="No-Break">ler formula:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-5" src="image/42.png"/></p>
+			<p class="heading-4" lang="en-GB">Some useful rat<a id="_idTextAnchor044"/>ios</p>
+			<p class="Body-Text" lang="en-GB">It can sometimes be helpful to use the following intui<span class="No-Break">tive ratios:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-27" src="image/43.png"/></p>
+			<p class="Body-Text" lang="en-GB">The <span class="Emphasis">contract leverage ratio</span> is the ratio of the notional exposure per contract to our trading capital. The smaller this number is, the more contracts we need to hold for a given amount of capital. The <span class="Emphasis">volatility ratio</span><span class="Strong"> </span>is the ratio of our target risk to the instrument risk. So if we require double the risk versus what is offered by the instrument, we’d need to hold twice as many contracts. Rearranging the original formula we get an interesting and intui<span class="No-Break">tive result:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-28" src="image/44.png"/></p>
+			<p class="Body-Text" lang="en-GB">Another figure that we’ll sometimes need is the <span class="Emphasis">leverage ratio</span>. The leverage ratio is just the total notional exposure of our position, divided by <span class="No-Break">our capital:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-29" src="image/45.png"/></p>
+			<p class="Body-Text" lang="en-GB">If we substitute we get the followi<span class="No-Break">ng identity:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-30" src="image/46.png"/></p>
+			<p class="Body-Text" lang="en-GB">So the <span class="Strong">required amount of leverage will be equal to the volatility ratio</span>: our target volatility divided by the price volatility of the instrument we’re trading. Note that this is only true if we are trading a single instrument, but this is the case for the first three strategies i<span class="No-Break">n this book.</span></p>
+			<p class="heading-3" lang="en-GB">Setting target risk</p>
+			<p class="Body-Text" lang="en-GB">We’ve <a id="_idTextAnchor045"/>got all the inputs for the formula above, with one glaring exception: the target risk (<span class="Equation">τ</span>). How should we determine what our target risk should be? There are a number of different factors we need to consider. Our target risk should be the most conservative (i.e. lowest value) from th<span class="No-Break">e following:</span></p>
+			<ul>
+				<li class="ListBullet-NEW" lang="en-GB">Risk possible given margin levels. This is set by the exchange, and/or the broker.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Risk possible given prudent leverage. This depends on your ability to cope with extreme losses.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Personal risk appetite. This is determined by your own feelings, or those of your clients if you are trading external funds.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Optimal risk given expected performance. This depends on the return profile of your trading strategy.</li>
+			</ul>
+			<p class="Body-Text" lang="en-GB">Let’s discuss th<span class="No-Break">ese in turn.</span></p>
+			<p class="heading-4" lang="en-GB">Risk possible given initial margin levels</p>
+			<p class="Body-Text" lang="en-GB">You can’t just buy as many contracts as you’d like, since ultimately you will be constrained by having to put up sufficient margin. Each S&amp;P 500 micro contract currently requires $1,150 initial margin. It would be completely insane, but if we were to use our entire capital for initial margin payments we’d be able to buy the following number o<span class="No-Break">f contracts:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-2" src="image/47.png"/></p>
+			<p class="Body-Text" lang="en-GB">If we substitute for <span class="Emphasis">N</span> in the formula, we can work out the implied maximum possible risk target given some m<span class="No-Break">argin level:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-2" src="image/48.png"/></p>
+			<p class="Body-Text" lang="en-GB">Let’s take an example. Suppose that we are trading the S&amp;P 500 with ri<span class="No-Break">sk of 16% a </span> year, current price of 4500, multiplier of $5 and margin per contrac<span class="No-Break">t of $1,150.</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-2" src="image/49.png"/></p>
+			<p class="Body-Text" lang="en-GB">That’s a lot of risk! You can achieve extremely high risk targets if you use the full amount of available leverage. <span class="Strong">For most sensible futures traders, the initial margin required is unlikely to be a constraint on the</span><span class="No-Break"><span class="Strong">ir leverage.</span></span></p>
+			<p class="heading-4" lang="en-GB">Risk possible given potentially large losses</p>
+			<p class="Body-Text" lang="en-GB">Given that it’s a little crazy to use the maximum possible leverage, what is a prudent level of leverage to use? We could be fairly conservative, as in strategy one, and use no leverage at all – fully fund the strategy and set our notional exposure equal to our capital. Then we could never lose all of our money, unless the futures price went to zero or below.<span class="Superscript _idGenCharOverride-1"><span id="footnote-051-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-051">45</a></span></span> To achieve that we’d always set our target risk to be equal to our inst<span class="No-Break">rument risk.</span></p>
+			<p class="Body-Text" lang="en-GB">Alternatively, we could take the view that we’d be prepared to lose a certain amount in a serious market crash. Let’s suppose that a 1987 sized crash is possible, resulting in a one-day loss of 30%. Assume that we’d be relatively relaxed about losing half of our capital in such a situation. A one day 30% loss would lose us half of our capital if our leverage ratio was 50% ÷ 30% = 1.667. From before we know that with the optim<span class="No-Break">al position:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-2" src="image/50.png"/></p>
+			<p class="Body-Text" lang="en-GB">So we can calculate the maximum ris<span class="No-Break">k target as:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-31" src="image/51.png"/></p>
+			<p class="Body-Text" lang="en-GB">And for our specific example of a<span class="No-Break"> 1987 crash:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-2" src="image/52.png"/></p>
+			<p class="Body-Text" lang="en-GB">Whilst it’s easy to do this calculation, assuming you can calibrate your ability to withstand large losses, it’s more difficult to work out what the expected worst return should be. Using the worst possible daily return in our historical data is a good starting point, but we’ll often need some imagination to consider possible worst-cas<span class="No-Break">e scenarios.</span></p>
+			<p class="Body-Text" lang="en-GB">For example, prior to 2015 the Swiss franc:euro (CHF/EUR) FX future rarely moved more than 0.005 price units each day; about 0.5% of the price. Indeed, from late 2011 to January 2015 it hardly budged at all, reflecting the Swiss central bank’s policy to stop the rate moving below a pegged level of 1.20. At this point most traders would have thought that 5% was a fairly pessimistic maximum loss; a little worse than CHF/EUR experienced in the 2008 finan<span class="No-Break">cial crisis.</span></p>
+			<p class="Body-Text" lang="en-GB">They were wrong. In January 2015 the central bank dropped the currency peg, and the exchange rate plummeted below 1.0; a move of over 0.20 price units in a matter of seconds, and about 16% of the closing price the p<span class="No-Break">revious day.</span></p>
+			<p class="Body-Text" lang="en-GB">In retrospect it would have been sensible to look beyond the CHF/EUR market, and consider what happened in other countries when central banks dropped currency pegs. A prudent FX trader would have remembered Black Wednesday in 1992, when the British pound dropped out of the European Exchange Rate mechanism which pegged it to the deutschmark and other currencies. On Black Wednesday and the day after the pound depreciated by around 14%; showing that double digit losses are possible even in normally safe G10 currencies like the pound and the <span class="No-Break">Swiss franc.</span></p>
+			<p class="heading-4" lang="en-GB">Personal risk appetite</p>
+			<p class="Body-Text" lang="en-GB">It doesn’t make sense to take more risk than you are comfortable with. Taking on too much risk can lead to suboptimal behaviour, such as closing positions too early because you can’t take the pain of the losses you have suffered. This is especially true if you are managing money for other people; you should only take risk that your clients can stomach. Institutional traders whose risk levels are too high will probably suffer heavy withdrawals by clients when their funds go into defici<span class="No-Break">t territory.</span></p>
+			<p class="Body-Text" lang="en-GB">In practice it’s quite difficult to calibrate someone’s risk appetite,<span class="Superscript _idGenCharOverride-1"><span id="footnote-050-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-050">46</a></span></span> and even harder to do so in the somewhat abstract units of annualised percentage standard deviation. Of course, we could infer what a given risk target implies for the chance of a given daily or annual loss, but that requires making some unrealistic assumptions about the distribution<span class="No-Break"> of returns.</span></p>
+			<p class="Body-Text" lang="en-GB">One possible solution is to present a selection of typical portfolios, and see which one best represents the trader or institutional client’s appetite for risk. <span class="No-Break">For example:</span></p>
+			<ul>
+				<li class="ListBullet-NEW" lang="en-GB">For a diversified portfolio of bonds the annualised standard deviation will usually be between 2% and 8%, depending on the maturity and credit rating.</li>
+				<li class="ListBullet-NEW" lang="en-GB">A typical investment portfolio with a mixture of stocks and bonds will have risk of around 12%.</li>
+				<li class="ListBullet-NEW" lang="en-GB">A diversified portfolio of global stocks will probably have an annualised standard deviation of 15% a year.</li>
+				<li class="ListBullet-no-grep" lang="en-GB">Blue chip individual stocks in developed markets typically have volatility of 20% to 40%.</li>
+				<li class="ListBullet-NEW" lang="en-GB">An especially volatile individual stock or a cryptocurrency could easily have an annualised standard deviation of over 100%.</li>
+			</ul>
+			<p class="heading-4" lang="en-GB"><a id="_idTextAnchor046"/>Optimal risk given expected performance</p>
+			<p class="Body-Text" lang="en-GB">Futures traders tend to have a higher tolerance for risk than most people, and the leverage on offer is very generous. So if you are comfortable with the possibility of large losses in a severe market crash, then risk targets of over 50% are not u<span class="No-Break">nachievable.</span></p>
+			<p class="Body-Text" lang="en-GB">It feels like it would be highly imprudent to trade with that risk target, but would it also be unprofitable? Figure 11 shows the expected final account value for a long-only investor in the S&amp;P 500 future, running with various risk targets. The figure assumes we begin with capital of one unit, and shows the final capital valuation at the end of a 40 year back test using compoun<span class="No-Break">ded returns.</span></p>
+			<p class="Label-NEW" lang="en-GB">Figure <a id="_idTextAnchor047"/>11: FINAL ACCOUNT VALUE given risk target for S&amp;P 500 buy and hold strategy</p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-17" src="image/Figure11.jpg"/></p>
+			<p class="Body-Text" lang="en-GB">It’s clear from this plot that increasing the risk target gradually increase<span class="No-Break">s the final </span> account value return we expect, until the target reaches around 40% a year. Thereafter the final account value falls sharply, and goes to zero once the risk target approaches<span class="No-Break"> 60% a year.</span></p>
+			<p class="Body-Text" lang="en-GB">What is happening here? As our leverage and risk increases, our worst days are getting larger in magnitude. It then takes us longer to recover from those especially bad days. For modest increases in risk target this isn’t a problem, since we get a larger offsetting benefit from improving our good days. But once our risk gets too high, those bad days <span class="No-Break">really hurt.</span></p>
+			<p class="Body-Text" lang="en-GB">Why do we end up losing all our money once the risk target is too high? Well, the worst day for this buy and hold S&amp;P 500 strategy is a loss of 27% (in October 1987). The volatility of the S&amp;P 500 is around 16%, so a risk target of 60% corresponds to a leverage factor of 3.75. If we leverage a 27% loss 3.75 times, then we’ll lose over 100%. Of course, it’s impossible to come back from <span class="No-Break">a 100% loss.</span></p>
+			<p class="Body-Text" lang="en-GB">The optimal level for our risk target is known as the <span class="Strong">Kelly optimal risk</span>. From the graph above the Kelly optimal for this strategy is a risk target of around 38%. It can be shown that this level is theoretically equal to the SR for the underlying strategy, if the returns are Gaussian normal.<span class="Superscript _idGenCharOverride-1"><span id="footnote-049-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-049">47</a></span></span> In this case the SR is 0.47,<span class="Superscript _idGenCharOverride-1"><span id="footnote-048-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-048">48</a></span></span> which would normally equate to a Kelly optimum risk target<span class="Superscript _idGenCharOverride-1"><span id="footnote-047-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-047">49</a></span></span> of 47%. The actual optimum is lower on this occasion, because S&amp;P 500 returns are certainly not Gaussian normal. Assets with negative skew and fat tails require Kelly optimal risk targets that are lower than implied b<span class="No-Break">y their SRs.</span></p>
+			<p class="Body-Text" lang="en-GB">Because returns are rarely Gaussian, and because Sharpe ratios are difficult to forecast, it’s generally accepted that a more conservative risk target of <span class="Strong">half Kelly </span>should be used. In this case we’d use half the full Kelly value of 47%, for a risk targ<span class="No-Break">et of 23.5%.</span></p>
+			<p class="Body-Text" lang="en-GB">In summary: to calculate the optimal risk target given an expected SR, we halve the expected SR and use the resulting figure as an annualised percentage standard deviation risk target. This will usually give a more conservative value for target risk than the other calculations in t<span class="No-Break">his section.</span></p>
+			<p class="heading-4" lang="en-GB">Summary: Target risk</p>
+			<p class="Body-Text" lang="en-GB">To summarise then our target risk, measured as an annualised percentage standard deviation, should be the lowest value of th<span class="No-Break">e following:</span></p>
+			<ul>
+				<li class="ListBullet-NEW" lang="en-GB">Risk possible given margin levels. This is set by the exchange, and/or the broker. As an example, for the S&amp;P 500 micro future the maximum risk is around <span class="Strong">313%</span>.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Risk possible given potentially large losses. This depends on your ability to cope with extreme losses, e.g. for S&amp;P 500, assuming we wish to survive a 1987-size crash with half our capital intact: <span class="Strong">27%</span>.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Personal risk appetite. This is determined by your own feelings, or those of your clients if you are trading external funds. This varies according to the trader, but is most likely to be in the range <span class="Strong">10% to 100%</span>, typically with lower values for institutional traders.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Optimal risk given expected performance. This depends on the return profile of your trading strategy. For S&amp;P 500 using the backtested value for strategy one this is around <span class="Strong">23%</span>.</li>
+			</ul>
+			<p class="Body-Text" lang="en-GB">The most conservative of these values is the final one: <span class="Strong">23%</span>, derived from the half Kelly calculation assuming a SR of 0.46 (which is probably optimistic, but I’ll let that slide for now). For simplicity I’m going to use a relatively conservative risk target of <span class="Strong">20%</span> for the rest of this book, which is roughly in line with the target used by many institutional futu<span class="No-Break">res traders.</span></p>
+			<p class="heading-3" lang="en-GB">Ri<a id="_idTextAnchor048"/>sk scaling the S&amp;P 500 micro future</p>
+			<p class="Body-Text" lang="en-GB">Let’s see how the buy and hold risk targeted strategy works in practice. We’ll use the risk target of 20% per year we derived above, and an arbitrary capital of $100,000. Assuming the standard deviation of the S&amp;P 500 is <span class="No-Break">16%, we get:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-32" src="image/53.png"/></p>
+			<p class="Body-Text" lang="en-GB">We’d have to recalculate the required optimal position every day, according to the current futures price and FX rate,<span class="Superscript _idGenCharOverride-1"><span id="footnote-046-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-046">50</a></span></span> by taking the rounded value of <span class="Emphasis">N</span>. Every time <span class="Emphasis">N</span> changed we would have to buy or sell to ensure our current position was in line with what is required to hit our target risk. This would result in a number of trades, so this strategy will have higher trading costs than strategy one, where we only have to pay for rolling from one contract to the next. I’ll discuss in more detail how I calculate trading costs in strategy three, but for now it’s worth noting that these extra costs only reduce our returns for the S&amp;P 500 by 0<span class="No-Break">.17% a year.</span></p>
+			<p class="Body-Text" lang="en-GB">In the backtest I don’t use <span class="Equation">σ</span><span class="Equation-body-subscript _idGenCharOverride-2">%</span> = 16%, but instead measure the average standard deviation over the entire time period<span class="Superscript _idGenCharOverride-1"><span id="footnote-045-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-045">51</a></span></span> for which we have data. This comes in a fraction high<span class="No-Break">er at 16.1%.</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-6" src="image/5.jpg"/></p>
+			<p class="Box-copy-heading" lang="en-GB">Discrete versus continuous trading</p>
+			<p class="Box-copy" lang="en-GB">As you are no doubt realising, I trade futures a little differently to most people. The way I trade is common amongst quantitative hedge funds, but almost unknown for retail traders. You won’t see any discussion in this book about ‘opening a position’, ‘entry filters’, ‘closing out’, or ‘stop losses’. Those are all the hallmarks of <span class="Emphasis">discrete </span>trading. I prefer to trade <span class="Emphasis">c</span><span class="No-Break"><span class="Emphasis">ontinuously</span></span><span class="No-Break">.</span></p>
+			<p class="Box-copy" lang="en-GB">What exactly do I mean by discrete trading? It’s how most people trade. You decide to open a position. You buy a few contracts. Then at some point in the future you decide to close it. You can point to the chart and say, “This is where I opened my trade,” and then point to another point and say, “Here is where I closed my trade.” You can calculate your profits (or losses) on each individual trade. You will have an interesting story you can tell about every trade, which is nice, especially if you want to become one of those YouTube or Instagram tr<span class="No-Break">ading gurus.</span></p>
+			<p class="Box-copy" lang="en-GB">I don’t get to tell interesting stories (as is becoming clear as you read this book!), because that is not what I do. Instead I <span class="Emphasis">continuously</span> calculate an <span class="Strong">optimal position </span>(although in practice for most of this book, continuously means once a day). That’s the position I would like to have on right now. I then round it, since we can’t hold fractional positions. Then I look and see what position I actually have on. If the two are different, then I trade so that my optimal and actual position<span class="No-Break">s are equal.</span></p>
+			<p class="Box-copy" lang="en-GB">This means I don’t have discrete ‘trades’, in the sense of positions that were opened and then closed. If I turn on a strategy and it wants to be long three contracts, then I will immediately buy three contracts. If the next day  it only wants to be long two contracts, then I will sell one. Maybe I will buy it back the next day. Depending on the strategy I am running, I will probably close the position at some point, and then go short. Where are the discrete trades? There aren’t any. Just a series of buys and sells to ensure I always have the optim<span class="No-Break">al position.</span></p>
+			<p class="Box-copy" lang="en-GB">Of course, you can still use many of the strategies in this book as a discrete trader, and I will explain how later in the book. But, as I demonstrated in my previous book <span class="Emphasis">Leveraged Trading</span>, continuous trading is more profitable and, as I will explain later in this book, makes it easier to trade multiple<span class="No-Break"> strategies.</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-6" src="image/5.jpg"/></p>
+			<p class="Body-Text" lang="en-GB">Figure 12 shows the number o<a id="_idTextAnchor049"/>f contracts held over time in the backtest for S&amp;P 500 micro futures. We begin with nearly 250 contracts, since the initial price is just over $100, but by the end of the testing period we have just under six (as the price is o<span class="No-Break">ver $4,000).</span></p>
+			<p class="Label-NEW" lang="en-GB">Figure 12: Position in contracts over time given risk scaling of S&amp;P 500</p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-33" src="image/Figure12.jpg"/></p>
+			<p class="Body-Text" lang="en-GB">Let us now turn to performance. We can use the same formula outlined back on page 24 to calculate the profit and loss in dollar terms, but with two important differences. Firstly, we have a varying number of contracts over time rather than just a single contract position. Secondly, when working out percentage returns we’ll now use the fixed notional capital figure of $100,000 rather than the varying capital figure from s<span class="No-Break">trategy one.</span></p>
+			<p class="Body-Text" lang="en-GB">One consequence of using fixed capital is that we don’t need to plot cumulated account curves in both currency and percentage terms, since the graphs will be identical except for the <span class="Emphasis">y</span>-axis. Personally I prefer to plot account curves in percentage terms, since the capital used is to an extent an arbit<span class="No-Break">rary figure.</span></p>
+			<p class="Body-Text" lang="en-GB">With that in mind, figures 13 and 14 show the daily percentage returns, and the cumulative sum of percentage returns r<span class="No-Break">espectively.</span></p>
+			<p class="Label-NEW" lang="en-GB">Figure 13: Daily percentage returns f<a id="_idTextAnchor050"/><a id="_idTextAnchor051"/>or S&amp;P 500 buy and hold with fixed risk target</p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-34" src="image/Figure13.jpg"/></p>
+			<p class="Label-NEW" lang="en-GB">Figure 14: Account curve for S&amp;P 500 <a id="_idTextAnchor052"/><a id="_idTextAnchor053"/>buy and hold with fixed risk target</p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-34" src="image/Figure14.jpg"/></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-6" src="image/5.jpg"/></p>
+			<p class="Box-copy-heading" lang="en-GB">Compounding</p>
+			<p class="Box-copy" lang="en-GB">Compounding of returns is a very important concept in finance, even if it’s probably not “The strongest force in the universe,” as Albert Einstein allegedly once said. Earning 10% a year for ten years will double your money with simple interest, but with compounding you can double your money in just over seven years and end up with 160% of your initial investmen<span class="No-Break">t after ten.</span></p>
+			<p class="Box-copy" lang="en-GB">However, with the futures trading strategies which I describe in this book, <span class="Strong">we don’t compound our returns when backtesting</span>. After a year of trading the S&amp;P 500 with $100,000 where we’ve made a hypothetical 10%, we don’t increase our capital to $110,000: instead it remains at $100,000. If we did compound, then we’d end up buying more contracts, and then making a greater dollar profit in any subsequent years. Since the number of contracts we hold isn’t affected by any profits that we’ve made to date, we don’t compound <span class="No-Break">our returns.</span></p>
+			<p class="Box-copy" lang="en-GB">(Strategy one is an exception to this rule. Because it uses the current price to decide how much capital to hold, it implicitly compounds i<span class="No-Break">ts returns.)</span></p>
+			<p class="Box-copy" lang="en-GB">I do this because cumulated account curves for compounded returns are hard to interpret. Assuming you have a profitable strategy, they will show exponential growth, with small variations early on, getting larger and larger over time. For example, figure 4 shows a compounded account curve for strategy one. You can barely see the crash of 1987 without a magni<span class="No-Break">fying glass.</span></p>
+			<p class="Box-copy" lang="en-GB">Instead, so that it’s easier to see what’s happening for the early years of a strategy, I cumulate percentage returns by summing them up over time (I use percentage returns as they can be easily compared, without considering the actual amount of capital traded). In my cumulated percentage plots 100 is equal to 100%, hence if you wanted to know how much profit you would have made trading a particular strategy with a given amount of fixed capital, you can infer this from the cumulated perce<span class="No-Break">ntage plots.</span></p>
+			<p class="Box-copy" lang="en-GB">From this point onwards, all the strategies in this book will show performance statistics and graphs for<span class="Strong"> </span><span class="Emphasis">non-compounded percentage returns</span>.<span class="Strong"> </span>Incidentally, this is why I was able to take an arithmetic mean of daily percentage returns when measuring the performance of strategy one, something that would be inappropriate for compounded returns (with compounded returns, to get an average we should really use the compound annual growth rate, CAGR, which is the annualised geometric mean of dai<span class="No-Break">ly returns).</span></p>
+			<p class="Box-copy" lang="en-GB"><span class="Strong">VERY IMPORTANT WARNING: </span>it would be extremely dangerous to actually run your strategy with real money and fixed capital! An important consequence of Kelly (or half Kelly) risk targeting is that you should reduce your position size when you lose money. A simple way to achieve this is to <span class="Strong">use the current value of your trading account as the notional capital</span> when calculating your required position. Then any losses you make will result in your positions being automatically reduced, and vice versa <span class="No-Break">for profits.</span></p>
+			<p class="Box-copy" lang="en-GB">How often should you update the figure for the value of your account that is used for position calculation? I update it daily, but then my system is fully automated. With a risk target of 20%, it’s probably safe enough to update it weekly except when the market is under stress, in which case more frequent updates would be prudent. Institutional traders will have to consider the liquidity and rules of their fund, and will usually update their notional AUM on a weekly or mo<span class="No-Break">nthly basis.</span></p>
+			<p class="Box-copy" lang="en-GB">In the final part of this book I’ll discuss in more detail other methods you can use to manage the compounding of y<span class="No-Break">our account.</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-6" src="image/5.jpg"/></p>
+			<p class="Body-Text" lang="en-GB">Let’s look at some performance char<span class="No-Break">acteristics:</span></p>
+			<table class="No-Table-Style _idGenTablePara-1" id="table013">
+				<colgroup>
+					<col/>
+					<col/>
+				</colgroup>
+				<tbody>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Strategy: Buy and hold, single contract</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">S&amp;P 500 micro future</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Years of data</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">41</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Mean annual return</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">12.1%</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Average drawdown</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">−16.9%</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Annualised standard deviation</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">25.0%</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Annualised Sharpe ratio</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">0.48</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Skew</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">−0.47</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Left tail</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">2.21</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB"><span class="Strong">Right tail</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-right" lang="en-GB">1.79</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="Body-Text-after-table" lang="en-GB">Overall these figures are better than for strategy one, although it’s quite difficult to compare given the very different way that they handle capital. More interestingly, the annualised standard deviation comes in at 25.0%. This is pretty good, although it has overshot our target of 20% because of a few extreme days (if I used monthly rather than daily returns, I get a better annualised figure: 19.8%). Of course, we know from figure 13 that the risk is actually sometimes a lot higher, and sometimes a lot lower, than 20%. I’ll address this problem in str<span class="No-Break">ategy three.</span></p>
+			<p class="heading-3" lang="en-GB">Mi<a id="_idTextAnchor054"/>nimum capital</p>
+			<p class="Body-Text" lang="en-GB">In the example above I used $100,000 for the notional capital. But not everyone has $100,000 spare. What if you only had $5,000? How many micro contracts would you buy now, given the current S&amp;P 500 pr<span class="No-Break">ice of 4500?</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-35" src="image/58.png"/></p>
+			<p class="Body-Text" lang="en-GB">Futures contracts have one substantial disadvantage – they are indivisible. You can’t buy or sell<span class="Superscript _idGenCharOverride-1"><span id="footnote-044-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-044">52</a></span></span> 0.278 of a futures contract. This means we can’t actually trade the S&amp;P 500 micro future if we only had $5,000. What then is the minimum amount of capital that we need to trade the S&amp;P 500 micro future? Let’s rearrange the standard formula for posi<span class="No-Break">tion sizing:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-2" src="image/59.png"/></p>
+			<p class="Body-Text" lang="en-GB">The smallest number of contracts we can hold, N, is one, wh<span class="No-Break">ich implies:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-20" src="image/60.png"/></p>
+			<p class="Body-Text" lang="en-GB">For example, with the S&amp;P micro future we get the following minimum capital with the current price of 4500, an estimated standard deviation of 16% a year, and a risk target of 2<span class="No-Break">0% per year:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-20" src="image/61.png"/></p>
+			<p class="Body-Text" lang="en-GB">That makes intuitive sense, as in figure 12 we have just over five contracts at the end of the data, using capital <span class="No-Break">of $100,000.</span></p>
+			<p class="Body-Text" lang="en-GB">However even $18,000 isn’t likely to be enough. Suppose we started trading the S&amp;P micro future with $18,000. On day one of trading we have a single contract. Then a couple of years later the price of the future has doubled (a nice problem to have!). Now the optimal number of contracts to hold is just 0.5. But we can’t hold half a contract. We have the choice of either closing our position completely, in which case our expected risk will drop to 0%, or continuing to hold on to our single contract implying our expected risk will be twice its t<span class="No-Break">arget: 40%.</span><span class="No-Break"><span class="Superscript _idGenCharOverride-1"><span id="footnote-043-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-043">53</a></span></span></span></p>
+			<p class="Body-Text" lang="en-GB">Neither option is ideal. To avoid this dilemma, it would be nice if we could start off with more than one contract. That way we’ll have the option to adjust our position as prices and risk change (and as the FX rate changes, where relevant). As a rule of thumb I advise setting your minimum capital <span class="Strong">so that you own at least four contracts when you begin trading</span>. Four contracts gives us enough wiggle room to keep our position risk at approximately the r<span class="No-Break">ight level. </span></p>
+			<p class="Body-Text" lang="en-GB">How much capital do we need if we want to own at least fou<span class="No-Break">r contracts?</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-36" src="image/62.png"/></p>
+			<p class="Body-Text" lang="en-GB">That would give us $72,000 for the S&amp;P 500 micro future. Expressing the formula in terms of notional exposure p<span class="No-Break">er contract:</span></p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-37" src="image/63.png"/></p>
+			<p class="Body-Text" lang="en-GB">Note that minimum capital will b<span class="No-Break">e higher if:</span></p>
+			<ul>
+				<li class="ListBullet-NEW" lang="en-GB">The futures multiplier is higher. Thus, if you have limited capital, it makes sense to use mini and micro futures if they are available: the full-size contracts will have higher minimum capital.</li>
+				<li class="ListBullet-NEW" lang="en-GB">The price and/or the exchange rate is higher. We would have required less capital in the past, when the S&amp;P 500 future was much cheaper.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Taken together, the above two points imply that minimum capital will be higher if <span class="Emphasis">notional exposure per contract</span> is larger.</li>
+				<li class="ListBullet-NEW" lang="en-GB">Minimum capital will also be larger if the standard deviation of the instrument is higher. With limited capital you will find it difficult to trade especially risky instruments.</li>
+				<li class="ListBullet-NEW" lang="en-GB">You will require a higher minimum capital when your risk target is lower. This is potentially dangerous, since an apparently easy way to make the most of limited capital is to take more risk with it. Do not be tempted to do this!</li>
+			</ul>
+			<p class="Body-Text" lang="en-GB">Rather than murder several trees with a list of minimum capital for every instrument in my data set, I’ve put the relevant statistics on the website for this book. Still, it is interesting to look at some of the highlights, shown<span class="No-Break"> in table 5.</span></p>
+			<p class="Label-NEW" lang="en-GB"><a id="_idTextAnchor055"/>Table 5: Very large and very small minimum capital requirements</p>
+			<table class="No-Table-Style _idGenTablePara-1" id="table014">
+				<colgroup>
+					<col/>
+					<col/>
+					<col/>
+					<col/>
+				</colgroup>
+				<tbody>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell"/>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB"><span class="Strong">Minimum capital</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell"/>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB"><span class="Strong">Minimum capital</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Schatz (Bond)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">  $7,600</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">Palladium (Metal)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$1,880,000</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">US 2-year (Bond)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$15,600</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">S&amp;P 400 (Equity)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$860,000</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">BTP 3-year (Bond)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$19,600</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">Gas – Last (Energy)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$844,000</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Korean 3-year (Bond)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$24,400</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">US 30-year (Bond)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$552,000</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">VSTOXX (Volatility)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$26,400</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">Copper (Metal)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$548,000</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Eurodollar (Interest rate)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$29,200</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">AEX (Equity)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$533,000</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">MXPUSD (FX rate)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$34,000</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">NOKUSD (FX rate)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$520,000</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">US 3-year (Bond)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$40,000</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">Gasoline (Energy)</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">$468,000</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="Table-line" lang="en-GB"><a id="_idTextAnchor056"/></p>
+			<p class="Table-source" lang="en-GB">Current capital required to hold a single contract using a 20% annualised risk target.</p>
+			<p class="Body-Text" lang="en-GB">Most of the smallest minimum capital instruments are bonds with short duration: the 2-year German (Schatz) and US bonds, and the 3-year Italian (BTP), Korean, and US bonds; plus the Eurodollar short-term interest rate futures. Bonds usually have lower volatility than other assets, with short duration bonds the sa<span class="No-Break">fest of all.</span></p>
+			<p class="Body-Text" lang="en-GB">The European volatility index (VSTOXX), and the MXPUSD FX future are also in this group. VSTOXX has a very low price – it was around 22.9 when I did this calculation (implying the expected standard deviation of the European Eurostoxx 50 index was 22.9% a year). It also has a low multiplier of just 100, in contrast to the US VIX which is also priced in volatility units but has a multiplier of 1000, and hence a minimum capital almost ten times larger<span class="No-Break"> ($250,000).</span></p>
+			<p class="Body-Text" lang="en-GB">Similarly, the notional exposure per contract for MXPUSD is just $24,000; so even though it’s relatively risky for a currency (standard deviation of 8.3% a year), the minimum capital is relati<span class="No-Break">vely modest.</span></p>
+			<p class="Body-Text" lang="en-GB">At the other end of the spectrum, Palladium has a price of nearly $1,900 a contract, which combined with a multiplier of 100 gives it a notional exposure per contract of $189,500. But it’s also insanely risky, with an annualised standard deviation of nearly 50%, resulting in a near two million dollar minimum capital requirement to hold fou<span class="No-Break">r contracts.</span></p>
+			<p class="heading-3" lang="en-GB">How<a id="_idTextAnchor057"/> well does risk targeting work over different instruments?</p>
+			<p class="Body-Text" lang="en-GB">Tables 6 and 7 show the average performance across different asset classes for strategy two. They are directly comparable with tab<span class="No-Break">les 3 and 4.</span></p>
+			<p class="Label-NEW" lang="en-GB">Table 6: Performance for fixed risk targeting across financial asset classes</p>
+			<table class="No-Table-Style _idGenTablePara-1" id="table015">
+				<colgroup>
+					<col/>
+					<col/>
+					<col/>
+					<col/>
+					<col/>
+				</colgroup>
+				<tbody>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell"/>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB"><span class="Strong">Equity</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB"><span class="Strong">Vol</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB"><span class="Strong">FX</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB"><span class="Strong">Bond</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Mean annual return</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">11.5%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−8.3%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.5%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">12.3%</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Average drawdown</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−8.7%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−76.9%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−29.2%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−12.5%</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Annualised standard deviation</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">22.2%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">21.8%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">21.2%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">21.4%</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Sharpe ratio</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">0.48</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−0.39</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">0.07</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">0.60</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Skew</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−0.40</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">2.27</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−0.24</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">0.15</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Lower tail</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.98</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.30</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.74</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.81</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Upper tail</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.54</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">2.68</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.65</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.53</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="Label-NEW" lang="en-GB">Table 7: Performance for fixed risk targeting across commodity asset classes</p>
+			<table class="No-Table-Style _idGenTablePara-1" id="table016">
+				<colgroup>
+					<col/>
+					<col/>
+					<col/>
+					<col/>
+					<col/>
+				</colgroup>
+				<tbody>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell"/>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB"><span class="Strong">Metals</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB"><span class="Strong">Energy</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB"><span class="Strong">Ags</span></p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB"><span class="Strong">Median</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Mean annual return</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">6.7%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">6.5%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">4.5%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">6.3%</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Average drawdown</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−38.3%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−33.4%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−45.5%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−15.0%</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Annualised standard deviation</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">21.9%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">22.5%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">21.4%</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">21.5%</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Sharpe ratio</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">0.31</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">0.29</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">0.20</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">0.34</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Skew</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−0.13</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−0.20</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">0.45</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">−0.17</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Lower tail</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.80</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.65</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.64</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.82</p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-left" lang="en-GB">Upper tail</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.64</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.58</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.71</p>
+						</td>
+						<td class="No-Table-Style Table-cell">
+							<p class="Table-text-centre" lang="en-GB">1.62</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="Body-Text-after-table" lang="en-GB">The relative picture is similar to strategy one. Equities have unpleasant skew and ugly tails but a decent SR. Bonds are better behaved, and have the highest SR of all. Volatility still has a negative SR, compensated for by positive skew and a fat right tail. The other assets sit somewhere between these extremes. Finally, as we would hope given we are explicitly targeting it, the standard deviation averaged across each asset class<span class="Superscript _idGenCharOverride-1"><span id="footnote-042-backlink"><a class="_idFootnoteLink _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-042">54</a></span></span> isn’t far off the ta<span class="No-Break">rget of 20%.</span></p>
+			<p class="Body-Text" lang="en-GB">It is interesting to compare strategies one and two. The SR is better in strategy two for every asset class, with the median instrument improving from 0.13 to 0.34. That is nearly a threefold increase! Skew is also more positive across the board, with the negative skew of −0.38 for strategy one more than halved. These are spectacular i<span class="No-Break">mprovements.</span></p>
+			<p class="heading-3" lang="en-GB">Conclusion</p>
+			<p class="Body-Text" lang="en-GB">For strategy two I introduced the idea that we should calculate position size according to available capital, and we also saw that position sizing using a risk target resulted in a substantial improvement in performance compared to strategy one. Many people say that diversification is the only free lunch in finance. I would add that <span class="Strong">risk targeting is the second free lunch</span> (or perhaps as I’m English, the free aft<span class="No-Break">ernoon tea).</span></p>
+			<p class="Body-Text" lang="en-GB">Although this strategy is more logical than the single contract version of strategy one, it is clearly still flawed. Even for instruments which do a better job of hitting the 20% risk target, such as the S&amp;P 500, there is still substantially different risk over time. Skew and fat tails remain an issue. Strategy two is far from perfect: we ca<span class="No-Break">n do better.</span></p>
+			<p class="heading-3" lang="en-GB">Str<a id="_idTextAnchor058"/>ategy two: Trading plan</p>
+			<p class="Imageline" lang="en-GB"><img alt="" class="_idGenObjectAttribute-38" src="image/Strategy02.jpg"/></p>
+			<hr class="HorizontalRule-1"/>
+			<div class="_idFootnotes">
+				<div class="_idFootnote" epub:type="footnote" id="footnote-053">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-053-backlink">43</a> If we spend 68% of our time in the range, we must be outside of the range 32% of the time. Half of that time we will be above the range, and half the time (16%) below it. So 16% of the time we’ll lose at l<span class="No-Break">east $2,500.</span></p>
+				</div>
+				<div class="_idFootnote" epub:type="footnote" id="footnote-052">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-052-backlink">44</a>	  Notice that the standard deviation is unaffected by the volatility of <span class="No-Break">the FX rate.</span></p>
+				</div>
+				<div class="_idFootnote" epub:type="footnote" id="footnote-051">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-051-backlink">45</a> As happened in Crude Oil in the early p<span class="No-Break">art of 2020.</span></p>
+				</div>
+				<div class="_idFootnote" epub:type="footnote" id="footnote-050">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-050-backlink">46</a> Many wealth management firms and financial advisers have developed questionnaires that try to quantify risk appetite, but this sort of exercise is a long way from being a precise scientific <span class="No-Break">measurement.</span></p>
+				</div>
+				<div class="_idFootnote" epub:type="footnote" id="footnote-049">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-049-backlink">47</a>	 This can be derived from the more commonly known optimum Kelly leverag<span class="No-Break">e, which is </span> f = <span class="Equation">μ</span> ÷ <span class="Equation">σ</span><span class="Superscript _idGenCharOverride-1">2</span> where <span class="Equation">μ</span> is the average excess return, and <span class="Equation">σ</span> is the standard deviation of the unleveraged portfolio. The optimal target risk with this leverage factor is f<span class="Equation">σ</span> = <span class="Equation">μ</span> ÷ <span class="Equation">σ</span>, which is equal to the SR. The Kelly optimum, or Kelly criterion, was developed by John L. Kelly at Bell Labs in 1956 and popularised by Ed Thorp, who started as a card counter before becoming one of the most successful hedge fund managers in history. See the bibliography in<span class="No-Break"> Appendix A.</span></p>
+				</div>
+				<div class="_idFootnote" epub:type="footnote" id="footnote-048">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-048-backlink">48</a>	 There is an apparent chicken and egg problem here. To calculate the optimal risk target you need the expected SR, for which you probably need to run a backtest, which requires knowing what risk target to use! In practice, since the SR is a risk adjusted measure, you can just run an initial backtest at some nominal risk target, then calculate the SR, and then decide what your final risk target should be. Finally, run a backtest with the appropriate risk target to understand the system’s likely behaviour. Or don't run a backtest, and just use the recommended risk target of<span class="No-Break"> 20% a year.</span></p>
+				</div>
+				<div class="_idFootnote" epub:type="footnote" id="footnote-047">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-047-backlink">49</a>	 In practice I’d probably be quite sceptical about expecting an SR of 0.47 for a buy and hold strategy on the S&amp;P 500 for reasons I’ll explain later, but at this stage it’s more important to understand the c<span class="No-Break">alculations.</span></p>
+				</div>
+				<div class="_idFootnote" epub:type="footnote" id="footnote-046">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-046-backlink">50</a>	 For now we don’t recalculate our estimate of <span class="Equation">σ</span><span class="Equation-subscript _idGenCharOverride-1">%</span>; I will do this in str<span class="No-Break">ategy three.</span></p>
+				</div>
+				<div class="_idFootnote" epub:type="footnote" id="footnote-045">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-045-backlink">51</a>	 Strictly speaking, this is a forward looking in-sample estimate and hence cheating, since we wouldn’t have known that figure when we started our hypothetical trading in the early 1980s. I’ll address this point in the n<span class="No-Break">ext chapter.</span></p>
+				</div>
+				<div class="_idFootnote" epub:type="footnote" id="footnote-044">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-044-backlink">52</a> Some brokers offer other products such as spread bets and contracts for difference which are sized so they are fractions of a futures contract, but these are not actually futures. See <span class="Emphasis">Leveraged Trading</span> for more <span class="No-Break">information.</span></p>
+				</div>
+				<div class="_idFootnote" epub:type="footnote" id="footnote-043">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-043-backlink">53</a> We would have the same problem if the risk (<span class="Equation">σ</span>%) halved. It’s also possible, but probably unlikely, that the FX rate <span class="No-Break">could halve.</span></p>
+				</div>
+				<div class="_idFootnote" epub:type="footnote" id="footnote-042">
+					<p class="Footnote-text" lang="en-US" xml:lang="en-US"><a class="_idFootnoteAnchor _idGenColorInherit" href="AdvancedFutures_ebook_060423-10.xhtml#footnote-042-backlink">54</a> Rebalancing purely because of price changes – as we do in strategy two – could mean we are affected by a phenomenon known as the <span class="Emphasis">leverage effect</span> in equity futures. In this theoretical setup firms which hold debt will get riskier when prices fall, so we end up with more risk from buying more stock. Hence we’d expect higher risk, and poorer risk targeting, for equities. In practice I don’t find significantly different results here across different as<span class="No-Break">set classes.</span></p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
